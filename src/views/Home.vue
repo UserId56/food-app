@@ -13,7 +13,11 @@
       </div>
     </div>
     <div class="line-head"></div>
-    <me-craft />
+    <me-craft :typePage="'home'">
+      <template v-slot:meCraft>
+        <span class="filter-type__title">Мы готовим</span>
+      </template>
+    </me-craft>
   </div>
 </template>
 
