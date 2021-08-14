@@ -8,9 +8,18 @@
           v-for="item of filterName"
           :key="item"
           @click="selectFilter(item)"
-          :class="{ 'active-filter': getFilter(item) }"
+          :class="{
+            'active-filter': getFilter(item),
+            'menu-style': typePage == 'menu',
+          }"
         >
-          <div class="filter-img" v-html="$store.state.filter[item].img"></div>
+          <transition name="filimg">
+            <div
+              class="filter-img"
+              v-html="$store.state.filter[item].img"
+              :class="{ 'active-menu-style': getFilter(item) }"
+            ></div>
+          </transition>
           <span
             class="filter-name"
             v-text="$store.state.filter[item].title"
@@ -20,19 +29,19 @@
     </div>
     <div class="food-list">
       <div class="food-list-title" v-html="title"></div>
-      <div
-        class="food-list-container"
-        :class="{ 'home-page': typePage != 'menu' ? true : false }"
-      >
+      <div class="food-list-container">
         <iten-food
           v-for="itemF of listFood"
           :key="itemF.id"
           :itemFood="itemF"
         ></iten-food>
       </div>
-      <div class="menu-list" v-if="typePage != 'menu' ? true : false">
-        <a href="/menu">Все блюда &#8594;</a>
-      </div>
+      <a
+        :href="'/menu?currentFilter=' + currentFilter"
+        class="menu-list"
+        v-if="typePage != 'menu' ? true : false"
+        >Все блюда &#8594;</a
+      >
     </div>
   </div>
 </template>
@@ -48,11 +57,14 @@ export default {
       type: String,
       default: "menu",
     },
+    filter: {
+      type: String,
+    },
   },
   data() {
     return {
       filterName: [],
-      currentFilter: "main",
+      currentFilter: this.$route.query.currentFilter || "main",
       title: "",
       listFood: [],
     };
@@ -80,16 +92,20 @@ export default {
           return b.valueWeek - a.valueWeek;
         });
         this.listFood = tempList;
-        this.listFood.splice(3);
+        this.listFood.splice(4);
       } else {
         this.listFood = tempList;
       }
     },
     selectFilter(item) {
       this.currentFilter = item;
+      this.$router.push({ query: { currentFilter: this.currentFilter } });
     },
     getFilter(item) {
       return item == this.currentFilter ? true : false;
+    },
+    setQuery() {
+      this.$route.query.currentFilter = this.currentFilter;
     },
   },
   watch: {
@@ -103,6 +119,7 @@ export default {
 
 <style lang="scss">
 .me-craft {
+  margin-bottom: 60px;
   .filter-type {
     .filter-type__title {
       font-weight: 600;
@@ -129,7 +146,11 @@ export default {
         border-radius: 10px;
         justify-content: space-between;
         transition: transform 1s ease;
-        transition: fill 1s ease;
+        transition: fill 0.5s ease;
+        svg {
+          width: 65px;
+          height: 65px;
+        }
         .filter-name {
           word-wrap: break-word;
           width: 60%;
@@ -140,6 +161,36 @@ export default {
       }
       .active-filter {
         fill: #ff614f;
+      }
+      .menu-style {
+        background: #bde098;
+        border-radius: 35px;
+        justify-content: flex-start;
+        padding: 10px;
+        .filter-img {
+          border-radius: 50%;
+          background: #ffffff;
+          width: 39px;
+          height: 39px;
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+          svg {
+            width: 23px;
+            height: 23px;
+          }
+        }
+        .active-menu-style {
+          border: 1.5px solid #448f55;
+          box-sizing: border-box;
+        }
+        .filter-name {
+          font-size: 14px;
+          line-height: 19px;
+          width: 75%;
+          text-align: center;
+        }
       }
     }
   }
@@ -176,13 +227,18 @@ export default {
       box-sizing: border-box;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
       border-radius: 35px;
-      a {
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 24px;
-        color: #000000;
-      }
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      color: #000000;
+      transition: background-color 0.5s;
+    }
+    .menu-list:hover {
+      background-color: #bde098;
+    }
+    .menu-list:active {
+      background-color: #448f55;
     }
   }
 }

@@ -18,17 +18,21 @@
         <span class="filter-type__title">Мы готовим</span>
       </template>
     </me-craft>
+
+    <banner-list />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import craft from "@/components/craft.vue";
+import banner from "@/components/banner.vue";
 
 export default {
   name: "Home",
   components: {
     "me-craft": craft,
+    "banner-list": banner,
   },
 };
 </script>
