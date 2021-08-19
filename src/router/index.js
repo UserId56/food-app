@@ -18,6 +18,11 @@ const routes = [{
     component: () =>
       import( /* webpackChunkName: "about" */ "../views/Menu.vue"),
   },
+  {
+    path: "/UA",
+    name: "useracc",
+    redirect: "/assets/user_accept.pdf"
+  },
 ];
 
 const router = new VueRouter({

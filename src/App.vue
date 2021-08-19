@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <header-app />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="content-container">
+      <header-app />
+      <router-view />
     </div>
-    <router-view /> -->
-    <router-view />
+    <footer class="footer-site">
+      <div class="footer-container">
+        <a href="/"
+          ><img src="@/assets/img/interface/CO_Logo_black.png" alt="logo"
+        /></a>
+        <div class="foter-contact">
+          <span>+7 (985) 000-00-00</span>
+          <span>co_gastrobar@mail.ru</span>
+        </div>
+        <div class="right-block">
+          <router-link to="/UA" class="user-conditions" target="_blank"
+            >Пользовательское соглашение</router-link
+          >
+          <span class="footer-year">&#169;&nbsp; 2021</span>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -25,10 +39,57 @@ export default {
 body {
   background: #fafafa;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
-  font-family: "Comfortaa";
-  font-weight: 500;
-  width: 80%;
-  margin: 0 auto;
+  .content-container {
+    font-family: "Comfortaa";
+    font-weight: 500;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .footer-site {
+    margin-top: 64px;
+    background: #20241c;
+    padding: 25px 0;
+    .footer-container {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .foter-contact {
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+        span {
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 21px;
+          color: #fff;
+        }
+      }
+      .right-block {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .user-conditions {
+          text-decoration: none;
+          font-size: 18px;
+          line-height: 21px;
+          text-decoration-line: underline;
+          color: #777875;
+        }
+        .footer-year {
+          font-size: 18px;
+          line-height: 21px;
+          color: #777875;
+        }
+      }
+    }
+  }
 }
 </style>
