@@ -44,7 +44,11 @@
               выходных.</span
             >
           </div>
-          <div class="work-time" v-text="IsOpen.text"></div>
+          <div
+            class="work-time"
+            v-text="IsOpen.text"
+            :class="{ 'open-time': IsOpen.IsOpen }"
+          ></div>
         </div>
         <div class="info-block-inst">
           <img src="../assets/img/interface/instagram.png" alt="instagram" />
@@ -198,6 +202,9 @@ export default {
           font-size: 18px;
           line-height: 21px;
           color: #c62727;
+        }
+        .open-time {
+          color: rgb(24, 204, 84);
         }
       }
       .info-block-inst {

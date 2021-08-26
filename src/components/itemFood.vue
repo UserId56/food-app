@@ -4,11 +4,12 @@
       'food-list__item': !itsBanner,
       'banner-list__item': itsBanner,
     }"
+    @click="openInfo"
   >
     <div
       :class="{
         'food-img': !itsBanner,
-        'banner-food-img': !itsBanner,
+        'banner-food-img': itsBanner,
       }"
     >
       <img :src="itemFood.img" :alt="itemFood.title" />
@@ -39,6 +40,10 @@ export default {
   methods: {
     test() {
       console.log(1);
+    },
+    openInfo() {
+      //Меняет showModalInfo в стате
+      console.log("openInfo");
     },
   },
 };

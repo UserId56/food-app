@@ -13,13 +13,12 @@
             'menu-style': typePage == 'menu',
           }"
         >
-          <transition name="filimg">
-            <div
-              class="filter-img"
-              v-html="$store.state.filter[item].img"
-              :class="{ 'active-menu-style': getFilter(item) }"
-            ></div>
-          </transition>
+          <div
+            class="filter-img"
+            v-html="$store.state.filter[item].img"
+            :class="{ 'active-menu-style': getFilter(item) }"
+          ></div>
+
           <span
             class="filter-name"
             v-text="$store.state.filter[item].title"
@@ -29,12 +28,15 @@
     </div>
     <div class="food-list">
       <div class="food-list-title" v-html="title"></div>
-      <div class="food-list-container">
+      <div class="food-list-container" v-if="listFood.length != 0">
         <iten-food
           v-for="itemF of listFood"
           :key="itemF.id"
           :itemFood="itemF"
         ></iten-food>
+      </div>
+      <div class="no-item" v-else>
+        <span class="no-item-title">Такого товара нет :(</span>
       </div>
       <a
         :href="'/menu?currentFilter=' + currentFilter"
@@ -56,9 +58,6 @@ export default {
     typePage: {
       type: String,
       default: "menu",
-    },
-    filter: {
-      type: String,
     },
   },
   data() {
@@ -213,6 +212,12 @@ export default {
       flex-wrap: wrap;
       width: 100%;
       margin: 52px auto 37px;
+    }
+    .no-item-title {
+      display: block;
+      width: fit-content;
+      font-size: 32px;
+      margin: 25px auto;
     }
     .home-page {
       flex-wrap: nowrap;
