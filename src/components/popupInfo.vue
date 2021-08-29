@@ -19,7 +19,18 @@
               class="action-block__prcie"
               v-text="itemFood.price + ' руб.'"
             ></span>
-            <div class="action-block__add-button">Добавить</div>
+            <div
+              class="action-block__add-button"
+              v-if="NoShowInput"
+              @click="addValue"
+            >
+              Добавить
+            </div>
+            <input-number
+              v-else
+              @value-input-number="valueNumber"
+              :valueNumber="itemFood.count"
+            />
           </div>
           <div class="line-hr"></div>
           <div class="modal-info-content__ingredients">
@@ -45,32 +56,41 @@
 </template>
 
 <script>
+import inputNumber from "./interface/input-number.vue";
 export default {
+  components: {
+    "input-number": inputNumber,
+  },
   data() {
     return {
       itemFood: {},
+      NoShowInput: true,
     };
   },
   created() {
-    this.$store.state.products.forEach((element) => {
+    for (let element of this.$store.state.products) {
+      console.log("------------------------");
+      console.log("ID select = ", this.$store.state.itemselect);
+      console.log("ID product = ", element.id);
+
       if (element.id == this.$store.state.itemselect) {
+        console.log("PRODUCT TRUE");
         this.itemFood = element;
+        this.itemFood.count = 0;
+        for (let cartItem of this.$store.state.cart.products) {
+          if (cartItem.id == this.$store.state.itemselect) {
+            console.log("CART TRUE");
+            this.itemFood.count = cartItem.count;
+            this.NoShowInput = false;
+            break;
+          }
+        }
+        break;
       } else {
-        this.itemFood = {
-          img: "../assets/img/food/syr_salat.png",
-          title: "Сырой салат",
-          description:
-            "Сырой салат от гастробара включает в себя: помидоры, огурцы, манго с семинами чиа, листья шпината, что то там еще и все это в лимонно-оливковом масле ",
-          price: 450,
-          weight: 300,
-          ingredients: [1, 2, 3, 3, 3],
-          timeWork: 30,
-          type: "main",
-          valueWeek: 11,
-          bannerId: null,
-        };
+        console.log("FALSE");
       }
-    });
+    }
+    console.log("------------------------");
     let ingredients = [];
     this.itemFood.ingredients.forEach((element) => {
       for (let i = 0; i < this.$store.state.ingredients.length; i++) {
@@ -83,9 +103,27 @@ export default {
     this.itemFood.ingredients = ingredients;
   },
   methods: {
+    addValue() {
+      this.itemFood.count = 1;
+      this.$store.commit("editCartItems", {
+        id: this.itemFood.id,
+        count: this.itemFood.count,
+      });
+      this.NoShowInput = false;
+    },
     closeModal() {
-      //Меняет showModalInfo в стате
+      this.$store.commit("closeModal");
       console.log("closeModal");
+    },
+    valueNumber(count) {
+      this.itemFood.count = count;
+      this.$store.commit("editCartItems", {
+        id: this.itemFood.id,
+        count: this.itemFood.count,
+      });
+      if (count == 0) {
+        this.NoShowInput = true;
+      }
     },
   },
 };
@@ -128,7 +166,7 @@ export default {
     .modal-info-content {
       display: flex;
       flex-direction: column;
-      width: 508px;
+      width: 60%;
       margin: 0 auto;
       .modal-info-content__head {
         display: flex;
@@ -165,7 +203,10 @@ export default {
           background: #bde098;
           border-radius: 35px;
           user-select: none;
-          padding: 11px 55px;
+          padding: 11px 0;
+          height: 24px;
+          width: 189px;
+          text-align: center;
         }
       }
       .modal-info-content__ingredients {

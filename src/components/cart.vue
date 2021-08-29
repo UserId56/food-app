@@ -2,7 +2,7 @@
   <div class="cart">
     <div class="icon">
       <img src="../assets/img/interface/cart.svg" alt="" />
-      <div class="count" v-text="count"></div>
+      <div class="count" v-text="count" v-show="count != 0"></div>
     </div>
     <span class="cart-title">Корзина</span>
   </div>
@@ -10,10 +10,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      count: this.$store.state.cart.count, //Переделать на геттер, получая общее кол-во добавленого товара
-    };
+  props: {
+    count: {
+      type: Number,
+      default: 0,
+    },
   },
 };
 </script>

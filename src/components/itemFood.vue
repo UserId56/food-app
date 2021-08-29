@@ -20,7 +20,7 @@
       <div
         class="food-price"
         v-text="itemFood.price + 'р'"
-        @click.stop="test"
+        @click.stop="addItem"
       ></div>
     </div>
   </div>
@@ -38,12 +38,15 @@ export default {
     },
   },
   methods: {
-    test() {
-      console.log(1);
+    addItem() {
+      this.openInfo("open");
     },
-    openInfo() {
-      //Меняет showModalInfo в стате
-      console.log("openInfo");
+    openInfo(openinBanner) {
+      if (this.$props.itsBanner && openinBanner != "open") {
+      } else {
+        this.$store.commit("openInfo", this.itemFood.id);
+        console.log("openInfo");
+      }
     },
   },
 };
@@ -116,6 +119,7 @@ export default {
     }
     .food-price {
       user-select: none;
+      cursor: pointer;
       font-weight: 600;
       font-size: 20px;
       line-height: 24px;
