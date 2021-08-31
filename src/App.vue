@@ -6,9 +6,9 @@
     </div>
     <footer class="footer-site">
       <div class="footer-container">
-        <a href="/"
+        <router-link to="/"
           ><img src="@/assets/img/interface/CO_Logo_black.png" alt="logo"
-        /></a>
+        /></router-link>
         <popup-info v-if="$store.state.showModalInfo" />
         <div class="foter-contact">
           <span>+7 (985) 000-00-00</span>

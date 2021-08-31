@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <a href="/" class="back-page">Главная / </a
+    <router-link to="/" class="back-page">Главная / </router-link
     ><span class="current-page" v-text="$store.state.pageName[pageName]"></span>
   </div>
 </template>

@@ -84,7 +84,7 @@ export default new Vuex.Store({
         description: "Сырой салат от гастробара включает в себя: помидоры, огурцы, манго с семинами чиа, листья шпината, что то там еще и все это в лимонно-оливковом масле ",
         price: 450,
         weight: 300,
-        ingredients: [],
+        ingredients: [1, 2],
         timeWork: 30,
         type: "main",
         valueWeek: 11,
@@ -96,7 +96,7 @@ export default new Vuex.Store({
         description: "Сырой салат от гастробара включает в себя: помидоры, огурцы, манго с семинами чиа, листья шпината, что то там еще и все это в лимонно-оливковом масле ",
         price: 450,
         weight: 300,
-        ingredients: [],
+        ingredients: [1, 2, 3],
         timeWork: 30,
         type: "main",
         valueWeek: 12,
@@ -108,7 +108,7 @@ export default new Vuex.Store({
         description: "Сырой салат от гастробара включает в себя: помидоры, огурцы, манго с семинами чиа, листья шпината, что то там еще и все это в лимонно-оливковом масле ",
         price: 450,
         weight: 300,
-        ingredients: [],
+        ingredients: [2, 3, 1],
         timeWork: 30,
         type: "main",
         valueWeek: 10,
@@ -120,7 +120,7 @@ export default new Vuex.Store({
         description: "Сырой салат от гастробара включает в себя: помидоры, огурцы, манго с семинами чиа, листья шпината, что то там еще и все это в лимонно-оливковом масле ",
         price: 450,
         weight: 300,
-        ingredients: [],
+        ingredients: [3, 1],
         timeWork: 30,
         type: "main",
         valueWeek: 10,
@@ -133,7 +133,7 @@ export default new Vuex.Store({
         description: "Сырой салат от гастробара включает в себя: помидоры, огурцы, манго с семинами чиа, листья шпината, что то там еще и все это в лимонно-оливковом масле ",
         price: 450,
         weight: 300,
-        ingredients: [],
+        ingredients: [2, 3],
         timeWork: 30,
         type: "main",
         valueWeek: 15,
@@ -145,6 +145,21 @@ export default new Vuex.Store({
   getters: {
     cartCount: state => {
       return state.cart.products.length != 0 ? state.cart.products.length - 1 : 0
+    },
+    getItemsFoodCart: state => {
+      let productCart = []
+      state.cart.products.forEach(cartItem => {
+        state.products.forEach(productItem => {
+          if (cartItem.id == productItem.id) {
+            let tempItem = {
+              ...productItem
+            }
+            tempItem.count = cartItem.count
+            productCart.push(tempItem)
+          }
+        })
+      })
+      return productCart
     }
   },
   mutations: {

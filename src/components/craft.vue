@@ -2,7 +2,7 @@
   <div class="me-craft">
     <div class="filter-type">
       <slot name="meCraft"></slot>
-      <div class="filter-container">
+      <div class="filter-container" id="filter-all">
         <div
           class="filter-item"
           v-for="item of filterName"
@@ -38,11 +38,14 @@
       <div class="no-item" v-else>
         <span class="no-item-title">Такого товара нет :(</span>
       </div>
-      <a
-        :href="'/menu?currentFilter=' + currentFilter"
+      <router-link
+        :to="{
+          name: 'Menu',
+          query: { currentFilter },
+        }"
         class="menu-list"
         v-if="typePage != 'menu' ? true : false"
-        >Все блюда &#8594;</a
+        >Все блюда &#8594;</router-link
       >
     </div>
   </div>
