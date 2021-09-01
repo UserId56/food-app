@@ -7,12 +7,12 @@
       </div>
       <span class="cart-title">Корзина</span>
     </div>
-    <div class="cart-block" v-if="showCart">
-      <div class="cart-block-container">
+    <div class="cart-block" v-if="showCart" @click.stop="closeModal">
+      <div class="cart-block-container" @click.stop>
         <div class="exit" @click.stop="closeModal"></div>
         <div class="head-cart">
           <span class="head-cart__title">Корзина</span>
-          <span class="head-cart__clear">Очистить</span>
+          <span class="head-cart__clear" @click.stop="clearCart">Очистить</span>
         </div>
         <div class="line-hr"></div>
         <div class="full-complate">
@@ -26,17 +26,24 @@
         </div>
         <div class="cart-items" v-if="cartItems.length != 0">
           <span class="cart-items__title">Приготовим для вас </span>
+          <div class="cart-items-container">
+            <card-food-info
+              v-for="cartItem of cartItems"
+              :key="cartItem.id"
+              :itsCart="true"
+              :getItemCart="cartItem"
+            />
+          </div>
+          <div class="line-hr"></div>
+          <div class="sum-cart">
+            <span class="sum-cart__title">Сумма заказа:</span>
+            <span class="sum-cart__sum-all" v-text="sumAll"></span>
+          </div>
+          <div class="line-hr"></div>
+          <div class="button-by"><span>Оформить ></span></div>
         </div>
         <div class="cart-no-items" v-else>
           <span class="cart-no-items__title">В корзине ни чего нет</span>
-        </div>
-        <div class="cart-items-container">
-          <card-food-info
-            v-for="cartItem of cartItems"
-            :key="cartItem.id"
-            :itsCart="true"
-            :getItemCart="cartItem"
-          />
         </div>
       </div>
     </div>
@@ -49,15 +56,20 @@ export default {
   components: {
     "card-food-info": cardFoodInfo,
   },
-  props: {
-    count: {
-      type: Number,
-      default: 0,
-    },
-  },
   computed: {
     cartItems() {
       return this.$store.getters.getItemsFoodCart;
+    },
+    count() {
+      return this.$store.state.cart.products.length != 0
+        ? this.$store.state.cart.products.length
+        : 0;
+    },
+    sumAll() {
+      return this.cartItems.reduce((sum, el) => {
+        let sumEl = el.price * el.count;
+        return sum + sumEl;
+      }, 0);
     },
   },
   data() {
@@ -73,6 +85,9 @@ export default {
     closeModal() {
       console.log("close cart");
       this.showCart = false;
+    },
+    clearCart() {
+      this.$store.commit("clearAllCart");
     },
   },
 };
@@ -147,6 +162,7 @@ export default {
           line-height: 42px;
         }
         .head-cart__clear {
+          cursor: pointer;
           font-weight: 400;
           font-size: 20px;
           line-height: 23px;
@@ -166,7 +182,7 @@ export default {
         }
       }
       .line-hr {
-        margin: 28px 0 23px;
+        margin: 27px 0;
       }
       .full-complate {
         display: flex;
@@ -202,6 +218,32 @@ export default {
           font-weight: 600;
           font-size: 20px;
           line-height: 24px;
+        }
+        .sum-cart {
+          display: flex;
+          justify-content: space-between;
+          font-size: 20px;
+          line-height: 24px;
+          .sum-cart__title {
+            font-weight: 500;
+          }
+          .sum-cart__sum-all {
+            font-weight: 600;
+          }
+        }
+        .button-by {
+          cursor: pointer;
+          background: #bde098;
+          border-radius: 35px;
+          width: 189px;
+          height: 46px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span {
+            font-size: 20px;
+            line-height: 24px;
+          }
         }
       }
       .cart-no-items {

@@ -246,7 +246,7 @@ export default {
   border-radius: 10px;
   width: 100%;
   padding: 17px;
-  margin: 12px auto;
+  margin: 12px 0;
   img {
     width: 119px;
     height: 119px;

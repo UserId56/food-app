@@ -70,7 +70,7 @@
       <div class="work__time-workd" v-text="timeWork"></div>
     </div>
     <div class="nav">
-      <cart-item :count="$store.state.cart.count" />
+      <cart-item />
       <login-user />
     </div>
   </header>

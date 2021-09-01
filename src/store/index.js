@@ -186,7 +186,6 @@ export default new Vuex.Store({
         if (item.count == 0) {
           console.log("Remove")
           state.cart.products = state.cart.products.filter(cartItem => cartItem.id != item.id)
-          state.cart.count = (state.cart.products.length != 0) ? state.cart.products.length : 0
           return
         }
         if (state.cart.products.find(element => {
@@ -209,7 +208,9 @@ export default new Vuex.Store({
         addNewItem()
       }
       console.log(state.cart.products.length)
-      state.cart.count = (state.cart.products.length != 0) ? state.cart.products.length : 0
+    },
+    clearAllCart(state) {
+      state.cart.products = []
     }
   },
   actions: {},
