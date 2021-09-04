@@ -61,9 +61,7 @@ export default {
       return this.$store.getters.getItemsFoodCart;
     },
     count() {
-      return this.$store.state.cart.products.length != 0
-        ? this.$store.state.cart.products.length
-        : 0;
+      return this.$store.state.cart.products.length;
     },
     sumAll() {
       return this.cartItems.reduce((sum, el) => {
@@ -79,11 +77,9 @@ export default {
   },
   methods: {
     openCart() {
-      console.log("open cart");
       this.showCart = true;
     },
     closeModal() {
-      console.log("close cart");
       this.showCart = false;
     },
     clearCart() {
@@ -150,7 +146,7 @@ export default {
       background: #ffffff;
       border-radius: 0px 0px 0px 10px;
       width: 546px;
-      padding: 28px 73px 51px 35px;
+      padding: 28px 35px 51px 35px;
       overflow-y: scroll;
       height: 600px;
       .head-cart {
@@ -190,6 +186,7 @@ export default {
         width: 100%;
         background: #bde098;
         border-radius: 10px;
+        box-sizing: border-box;
         .full-complate__icon {
           display: flex;
           align-items: center;

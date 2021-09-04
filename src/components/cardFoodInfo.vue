@@ -247,6 +247,7 @@ export default {
   width: 100%;
   padding: 17px;
   margin: 12px 0;
+  box-sizing: border-box;
   img {
     width: 119px;
     height: 119px;
