@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="line-head"></div>
-    <me-craft :typePage="'home'">
-      <template v-slot:meCraft>
+    <me-craft typePage="home">
+      <template v-slot:default>
         <span class="filter-type__title">Мы готовим</span>
       </template>
     </me-craft>
@@ -47,7 +47,7 @@
           <div
             class="work-time"
             v-text="IsOpen.text"
-            :class="{ 'open-time': IsOpen.IsOpen }"
+            :class="{ 'open-time': IsOpen.isOpen }"
           ></div>
         </div>
         <div class="info-block-inst">
@@ -104,7 +104,7 @@ export default {
     },
   },
   mounted() {
-    setInterval(() => this.workTime(), 300000);
+    setInterval(() => this.workTime(), 60000);
   },
 };
 </script>

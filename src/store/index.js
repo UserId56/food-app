@@ -178,13 +178,10 @@ export default new Vuex.Store({
           id: item.id,
           count: item.count
         }
-        console.log("added")
-        console.log("---------")
         state.cart.products.push(newItemCart)
       }
       if (state.cart.products.length != 0) {
         if (item.count == 0) {
-          console.log("Remove")
           state.cart.products = state.cart.products.filter(cartItem => cartItem.id != item.id)
           return
         }
@@ -194,20 +191,15 @@ export default new Vuex.Store({
               return true
             }
           })) {
-          console.log("add count")
-          console.log("---------")
 
         } else {
           if (item.count != 0) {
-            console.log("Add new Item!")
             addNewItem()
           }
         }
       } else {
-        console.log("Add new Item! 0")
         addNewItem()
       }
-      console.log(state.cart.products.length)
     },
     clearAllCart(state) {
       state.cart.products = []

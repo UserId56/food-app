@@ -62,15 +62,6 @@ export default {
       this.bannerPlay = true;
     },
     corusel(ev) {
-      //   let firstElement = this.bannerList.slice(0, 1);
-      //   let overElements = this.bannerList.slice(1);
-      //   let indexBanner = 1;
-      //   console.log("firstElement:", firstElement);
-      //   console.log("overElements:", overElements);
-      //   this.bannerList = [...overElements, firstElement[0]];
-      //   this.bannerList.forEach((el) => {
-      //     el.id = indexBanner++;
-      //   });
       if (ev) {
         this.bannerPlay = true;
       }
@@ -97,7 +88,7 @@ export default {
 <style lang="scss">
 .banner-list {
   position: relative;
-  width: 1162px;
+  width: 70vw;
   height: 568px;
   margin: 0 auto;
   .banner-list_first-element {
@@ -106,7 +97,7 @@ export default {
     background-image: url(../assets/img/interface/bannerB.png);
     background-repeat: no-repeat;
     padding: 32px 101px 0;
-    width: 1128px;
+    width: 70vw;
     height: 513px;
     border: 2.5px solid #bde098;
     box-sizing: border-box;
@@ -136,7 +127,7 @@ export default {
   .banner-list_back-element {
     position: absolute;
     transform: translateY(54px) translateX(33px);
-    width: 1128px;
+    width: 70vw;
     height: 513px;
     background: #e0f2cc;
     border-radius: 10px;

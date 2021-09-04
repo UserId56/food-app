@@ -34,12 +34,12 @@
         </div>
         <input-number
           v-else
+          v-model="itemFood.count"
           @value-input-number="valueNumber"
-          :valueNumber="itemFood.count"
         />
       </div>
       <div class="line-hr" v-show="!itsCart"></div>
-      <div class="no-cart-container" v-if="!itsCart">
+      <template v-if="!itsCart">
         <div class="modal-info-content__ingredients">
           <span class="ingredients-title">Ингредиенты</span>
           <div class="ingredients-container">
@@ -56,7 +56,7 @@
           class="modal-info-content__description"
           v-text="itemFood.description"
         ></span>
-      </div>
+      </template>
     </div>
   </div>
 </template>
@@ -160,11 +160,12 @@ export default {
   text-align: left;
 }
 .modal-info-content {
+  user-select: none;
   display: flex;
   flex-direction: column;
   width: 55%;
   margin: 0 auto;
-  .modal-info-content__head {
+  &__head {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -175,7 +176,7 @@ export default {
       line-height: 38px;
     }
   }
-  .modal-info-content__weight {
+  &__weight {
     margin: 24px 0 70px;
     font-size: 17px;
     line-height: 20px;
@@ -185,7 +186,7 @@ export default {
     width: 100%;
     border: 1px solid #eeeeee;
   }
-  .modal-info-content__action-block {
+  &__action-block {
     display: flex;
     justify-content: space-between;
     padding: 28px 0;
@@ -223,16 +224,16 @@ export default {
         img {
           width: 33px;
         }
+        &:not(:first-child):not(:last-child):nth-child(n) {
+          margin: 0 5px;
+        }
+        &:first-child {
+          margin: 0 5px 0 0;
+        }
+        &:last-child {
+          margin: 0 0 0 5px;
+        }
       }
-    }
-    .ingredients-item:not(:first-child):not(:last-child):nth-child(n) {
-      margin: 0 5px;
-    }
-    .ingredients-item:first-child {
-      margin: 0 5px 0 0;
-    }
-    .ingredients-item:last-child {
-      margin: 0 0 0 5px;
     }
   }
   .modal-info-content__description {
@@ -241,6 +242,7 @@ export default {
   }
 }
 .modal_cart {
+  user-select: none;
   background: #ffffff;
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.06);
   border-radius: 10px;

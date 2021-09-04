@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <nav-bar :pageName="$route.name"></nav-bar>
-    <me-craft :typePage="'menu'" :filter="currentFilter"></me-craft>
+    <me-craft typePage="menu"></me-craft>
     <banner-list />
   </div>
 </template>
@@ -15,11 +15,6 @@ export default {
     "me-craft": craft,
     "nav-bar": navigation,
     "banner-list": banner,
-  },
-  props: {
-    currentFilter: {
-      type: String,
-    },
   },
 };
 </script>

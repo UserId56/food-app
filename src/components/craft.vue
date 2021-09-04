@@ -1,7 +1,7 @@
 <template>
   <div class="me-craft">
     <div class="filter-type">
-      <slot name="meCraft"></slot>
+      <slot></slot>
       <div class="filter-container" id="filter-all">
         <div
           class="filter-item"
@@ -138,8 +138,9 @@ export default {
         display: flex;
         align-items: center;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.2vw;
         line-height: 25px;
+        text-align: center;
         width: 19%;
         padding: 15px;
         box-sizing: border-box;

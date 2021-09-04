@@ -46,6 +46,15 @@ body {
   margin: 0;
   padding: 0;
 }
+@mixin df-jcsb {
+  display: flex;
+  justify-content: space-between;
+}
+@mixin fs-lh-c($color: #777875) {
+  font-size: 15px;
+  line-height: 21px;
+  color: $color;
+}
 #app {
   font-family: "Comfortaa";
   font-weight: 500;
@@ -60,36 +69,27 @@ body {
     .footer-container {
       width: 80%;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
+      @include df-jcsb;
       align-items: center;
       .foter-contact {
-        display: flex;
-        justify-content: space-between;
+        @include df-jcsb;
         width: 30%;
         span {
           font-weight: 500;
-          font-size: 15px;
-          line-height: 21px;
-          color: #fff;
+          @include fs-lh-c(#fff);
         }
       }
       .right-block {
         width: 400px;
-        display: flex;
-        justify-content: space-between;
+        @include df-jcsb;
         align-items: center;
         .user-conditions {
           text-decoration: none;
-          font-size: 15px;
-          line-height: 21px;
+          @include fs-lh-c;
           text-decoration-line: underline;
-          color: #777875;
         }
         .footer-year {
-          font-size: 15px;
-          line-height: 21px;
-          color: #777875;
+          @include fs-lh-c;
         }
       }
     }

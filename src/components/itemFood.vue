@@ -58,17 +58,21 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 357px;
+  width: 23%;
   background: #ffffff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   margin: 0 10px 20px;
   .food-img {
-    width: 365px;
-    height: 365px;
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   .food-info {
     display: flex;
@@ -95,6 +99,7 @@ export default {
   }
 }
 .banner-list__item {
+  user-select: none;
   display: flex;
   justify-content: space-between;
   margin: 50px 0 0;

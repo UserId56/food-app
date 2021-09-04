@@ -13,9 +13,6 @@ const routes = [{
   {
     path: "/menu",
     name: "Menu",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: Menu
   },
   {
@@ -39,10 +36,10 @@ const router = new VueRouter({
   }
 });
 
-router.beforeEach((to, from, next) => {
-  console.log(to)
-  console.log(from)
-  return next()
-})
+// router.beforeEach((to, from, next) => {
+//   console.log(to)
+//   console.log(from)
+//   return next()
+// })
 
 export default router;

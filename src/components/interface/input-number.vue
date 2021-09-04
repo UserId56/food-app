@@ -8,6 +8,10 @@
 
 <script>
 export default {
+  model: {
+    prop: "valueNumber",
+    event: "value-input-number",
+  },
   props: {
     valueNumber: {
       type: Number,
@@ -22,13 +26,10 @@ export default {
   methods: {
     minusValue() {
       this.valueInput = this.valueInput > 0 ? this.valueInput - 1 : 0;
+      this.$emit("value-input-number", this.valueInput);
     },
     plusValue() {
       this.valueInput += 1;
-    },
-  },
-  watch: {
-    valueInput() {
       this.$emit("value-input-number", this.valueInput);
     },
   },
