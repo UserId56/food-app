@@ -33,12 +33,12 @@ export default {
     left: 0;
     top: 17px;
     width: 0;
-    border: 0 solid #868686;
     transform: rotate(180deg);
-    transition: width 0.5s, border 0.5s;
+    transition: width 0.5s;
   }
   .back-page:hover:after {
-    border: 1px solid #868686;
+    height: 1px;
+    background-color: #868686;
     width: 77%;
   }
 }

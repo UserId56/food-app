@@ -20,7 +20,7 @@
       <div
         class="food-price"
         v-text="itemFood.price + 'р'"
-        @click.stop="addItem"
+        @click.stop="openInfo('open')"
       ></div>
     </div>
   </div>
@@ -38,14 +38,10 @@ export default {
     },
   },
   methods: {
-    addItem() {
-      this.openInfo("open");
-    },
     openInfo(openinBanner) {
       if (this.$props.itsBanner && openinBanner != "open") {
       } else {
         this.$store.commit("openInfo", this.itemFood.id);
-        console.log("openInfo");
       }
     },
   },

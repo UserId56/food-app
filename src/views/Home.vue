@@ -52,7 +52,7 @@
         </div>
         <div class="info-block-inst">
           <img src="../assets/img/interface/instagram.png" alt="instagram" />
-          <span class="instagram-name">CO_GASTROBAR</span>
+          <span class="instagram-name" v-text="socialText"></span>
         </div>
       </div>
     </div>
@@ -79,6 +79,7 @@ export default {
         work: "мы открыты",
         close: "мы закрыты",
       },
+      socialText: this.$store.state.about.social,
     };
   },
   methods: {
@@ -86,6 +87,7 @@ export default {
       window.open("https://goo.gl/maps/2ktGdXP3mTm6LaCe8");
     },
     workTime() {
+      console.log(12);
       let currentDate = new Date();
       let tempDate = {
         date: currentDate,
@@ -121,8 +123,8 @@ export default {
       span {
         font-style: normal;
         font-weight: 600;
-        font-size: 45px;
-        line-height: 66px;
+        font-size: 37px;
+        line-height: 47px;
       }
     }
     .home-title_info-banner {
@@ -178,9 +180,9 @@ export default {
           .adress-text {
             margin-left: 26px;
             font-weight: 500;
-            font-size: 18px;
-            line-height: 25px;
-            width: 320px;
+            font-size: 16px;
+            line-height: 22px;
+            width: 266px;
           }
         }
         .how-go {
@@ -198,7 +200,7 @@ export default {
         .work-time {
           text-align: center;
           padding-left: 30px;
-          margin-top: 20px;
+          margin-top: 44px;
           font-size: 18px;
           line-height: 21px;
           color: #c62727;

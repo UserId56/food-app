@@ -14,7 +14,7 @@ export default new Vuex.Store({
     itemselect: null,
     showModalInfo: false,
     about: {
-      social: "CO_GASTROBAR",
+      social: "FOOD_TEST",
       phone: "+7 (499)-00-00",
       mail: "co_gastrobar@mail.ru",
       inn: "ИНН: 503457002",

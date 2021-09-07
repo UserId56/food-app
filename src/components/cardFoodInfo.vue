@@ -89,36 +89,24 @@ export default {
       this.NoShowInput = false;
       return;
     }
-    console.log();
     for (let element of this.$store.state.products) {
-      console.log("------------------------");
-      console.log("ID select = ", this.$store.state.itemselect);
-      console.log("ID product = ", element.id);
-
       if (element.id == this.$store.state.itemselect) {
-        console.log("PRODUCT TRUE");
         Object.assign(this.itemFood, element);
-        console.log(this.itemFood.ingredients);
         this.itemFood.count = 0;
         for (let cartItem of this.$store.state.cart.products) {
           if (cartItem.id == this.$store.state.itemselect) {
-            console.log("CART TRUE");
             this.itemFood.count = cartItem.count;
             this.NoShowInput = false;
             break;
           }
         }
         break;
-      } else {
-        console.log("FALSE");
       }
     }
-    console.log("------------------------");
     let ingredients = [];
     this.itemFood.ingredients.forEach((element) => {
       for (let i = 0; i < this.$store.state.ingredients.length; i++) {
         if (element == this.$store.state.ingredients[i].id) {
-          console.log("ing true");
           ingredients.push(this.$store.state.ingredients[i]);
           break;
         }

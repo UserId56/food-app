@@ -12,7 +12,7 @@
         <popup-info v-if="$store.state.showModalInfo" />
         <div class="foter-contact">
           <span>+7 (985) 000-00-00</span>
-          <span>co_gastrobar@mail.ru</span>
+          <span>food_test@mail.ru</span>
         </div>
         <div class="right-block">
           <router-link to="/UA" class="user-conditions" target="_blank"
@@ -61,6 +61,7 @@ body {
   .content-container {
     width: 80%;
     margin: 0 auto;
+    max-width: 1523px;
   }
   .footer-site {
     margin-top: 64px;
@@ -68,12 +69,13 @@ body {
     padding: 25px 0;
     .footer-container {
       width: 80%;
+      max-width: 1523px;
       margin: 0 auto;
       @include df-jcsb;
       align-items: center;
       .foter-contact {
         @include df-jcsb;
-        width: 30%;
+        width: 32%;
         span {
           font-weight: 500;
           @include fs-lh-c(#fff);
