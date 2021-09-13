@@ -39,7 +39,8 @@ export default {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(51, 49, 49, 0.85);
+  backdrop-filter: blur(10px);
+  background: rgb(51 49 49 / 37%);
   text-align: center;
   .modal-info {
     position: relative;

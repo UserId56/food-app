@@ -46,6 +46,9 @@ body {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+}
 @mixin df-jcsb {
   display: flex;
   justify-content: space-between;

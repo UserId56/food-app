@@ -9,42 +9,49 @@
     </div>
     <div class="cart-block" v-if="showCart" @click.stop="closeModal">
       <div class="cart-block-container" @click.stop>
-        <div class="exit" @click.stop="closeModal"></div>
-        <div class="head-cart">
-          <span class="head-cart__title">Корзина</span>
-          <span class="head-cart__clear" @click.stop="clearCart">Очистить</span>
-        </div>
-        <div class="line-hr"></div>
-        <div class="full-complate">
-          <div class="full-complate__icon">
-            <img src="../assets/img/interface/clock.png" alt="clock" />
-          </div>
-          <span class="full-complate__text"
-            >Действует только предзаказ. <br />
-            Приходи и забирай.</span
-          >
-        </div>
-        <div class="cart-items" v-if="cartItems.length != 0">
-          <span class="cart-items__title">Приготовим для вас </span>
-          <div class="cart-items-container">
-            <card-food-info
-              v-for="cartItem of cartItems"
-              :key="cartItem.id"
-              :itsCart="true"
-              :getItemCart="cartItem"
-            />
+        <template v-if="!showConfirm">
+          <div class="exit" @click.stop="closeModal"></div>
+          <div class="head-cart">
+            <span class="head-cart__title">Корзина</span>
+            <span class="head-cart__clear" @click.stop="clearCart"
+              >Очистить</span
+            >
           </div>
           <div class="line-hr"></div>
-          <div class="sum-cart">
-            <span class="sum-cart__title">Сумма заказа:</span>
-            <span class="sum-cart__sum-all" v-text="sumAll"></span>
+          <div class="full-complate">
+            <div class="full-complate__icon">
+              <img src="../assets/img/interface/clock.png" alt="clock" />
+            </div>
+            <span class="full-complate__text"
+              >Действует только предзаказ. <br />
+              Приходи и забирай.</span
+            >
           </div>
-          <div class="line-hr"></div>
-          <div class="button-by"><span>Оформить ></span></div>
-        </div>
-        <div class="cart-no-items" v-else>
-          <span class="cart-no-items__title">В корзине ни чего нет</span>
-        </div>
+          <div class="cart-items" v-if="cartItems.length != 0">
+            <span class="cart-items__title">Приготовим для вас </span>
+            <div class="cart-items-container">
+              <card-food-info
+                v-for="cartItem of cartItems"
+                :key="cartItem.id"
+                :itsCart="true"
+                :getItemCart="cartItem"
+              />
+            </div>
+            <div class="line-hr"></div>
+            <div class="sum-cart">
+              <span class="sum-cart__title">Сумма заказа:</span>
+              <span class="sum-cart__sum-all" v-text="sumAll"></span>
+            </div>
+            <div class="line-hr"></div>
+            <div class="button-by" @click="openConfirm">
+              <span>Оформить ></span>
+            </div>
+          </div>
+          <div class="cart-no-items" v-else>
+            <span class="cart-no-items__title">В корзине ни чего нет</span>
+          </div>
+        </template>
+        <confirm-order v-else @back-cart="backCart" />
       </div>
     </div>
   </div>
@@ -52,9 +59,16 @@
 
 <script>
 import cardFoodInfo from "@/components/cardFoodInfo.vue";
+import confirmOrder from "@/components/confirm.vue";
 export default {
   components: {
     "card-food-info": cardFoodInfo,
+    "confirm-order": confirmOrder,
+  },
+  provide() {
+    return {
+      closeModalCart: this.closeModalCart,
+    };
   },
   computed: {
     cartItems() {
@@ -73,6 +87,7 @@ export default {
   data() {
     return {
       showCart: false,
+      showConfirm: false,
     };
   },
   methods: {
@@ -84,6 +99,16 @@ export default {
     },
     clearCart() {
       this.$store.commit("clearAllCart");
+    },
+    backCart() {
+      this.showConfirm = false;
+    },
+    openConfirm() {
+      this.showConfirm = true;
+    },
+    closeModalCart() {
+      this.showCart = false;
+      console.log(this);
     },
   },
 };
@@ -126,7 +151,8 @@ export default {
     top: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(51, 49, 49, 0.85);
+    backdrop-filter: blur(10px);
+    background: rgb(51 49 49 / 37%);
     text-align: center;
     .cart-block-container {
       .exit {
