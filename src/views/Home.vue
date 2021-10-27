@@ -223,4 +223,60 @@ export default {
     }
   }
 }
+@media (max-width: 1024px) {
+  .home {
+    margin: 75px 0 0;
+    .home-title {
+      .home-title__text {
+        span {
+          font-size: 33px;
+          line-height: 39px;
+        }
+      }
+      .home-title_info-banner {
+        .info-banner__text {
+          width: 254px;
+        }
+      }
+    }
+    .line-head {
+      margin: 44px 0 39px;
+    }
+    .front-footer-line {
+      margin: 50px 0px 54px;
+    }
+    .contact {
+      .contact-title {
+        font-size: 31px;
+        line-height: 36px;
+      }
+      .info-block {
+        margin-top: 49px;
+        flex-direction: column;
+        height: 400px;
+        .info-block-adress,
+        .info-block-work {
+          height: 30%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .info-block-container {
+            .adress-text {
+              width: auto;
+            }
+          }
+          .how-go {
+            width: 279px;
+          }
+          .work-time {
+            margin-top: 0;
+          }
+        }
+        .info-block-inst {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}
 </style>

@@ -99,7 +99,7 @@ export default {
     background-repeat: no-repeat;
     padding: 32px 101px 0;
     width: 70vw;
-    max-width: 1344px;
+    // max-width: 1344px;
     height: 513px;
     border: 2.5px solid #bde098;
     box-sizing: border-box;
@@ -156,6 +156,16 @@ export default {
     }
     to {
       transform: translateY(54px) translateX(33px);
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .banner-list {
+    .banner-list_first-element {
+      height: 432px;
+    }
+    .banner-list_back-element {
+      height: 432px;
     }
   }
 }

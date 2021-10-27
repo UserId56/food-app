@@ -100,4 +100,24 @@ a {
     }
   }
 }
+@media (max-width: 1024px) {
+  #app {
+    .footer-site {
+      .footer-container {
+        img {
+          width: 130px;
+        }
+        .foter-contact {
+          span {
+            font-size: 13px;
+            line-height: 17px;
+          }
+        }
+        .right-block {
+          width: 362px;
+        }
+      }
+    }
+  }
+}
 </style>

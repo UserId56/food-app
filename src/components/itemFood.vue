@@ -132,4 +132,36 @@ export default {
     }
   }
 }
+@media (max-width: 1024px) {
+  .food-list__item {
+    width: 22%;
+    .food-img {
+      img {
+        width: 140px;
+      }
+    }
+    .food-info {
+      .item-title {
+        font-size: 15px;
+        line-height: 22px;
+        text-align: center;
+      }
+    }
+  }
+  .banner-list__item {
+    margin: 45px 0 0;
+    .banner-food-img {
+      img {
+        width: 240px;
+      }
+    }
+    .food-info {
+      .item-title {
+        font-size: 25px;
+        line-height: 29px;
+        text-align: center;
+      }
+    }
+  }
+}
 </style>

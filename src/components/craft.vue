@@ -251,4 +251,24 @@ export default {
     }
   }
 }
+@media (max-width: 1024px) {
+  .me-craft {
+    .filter-type {
+      .filter-type__title {
+        font-size: 31px;
+        line-height: 38px;
+      }
+      .filter-container {
+        margin: 41px 0 56px;
+        .filter-item {
+          line-height: 17px;
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
