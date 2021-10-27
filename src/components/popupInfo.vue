@@ -49,7 +49,6 @@ export default {
     background: #ffffff;
     border-radius: 10px;
     width: 80%;
-    max-width: 1523px;
   }
 }
 .all-info-container::after {

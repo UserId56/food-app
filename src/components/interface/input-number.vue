@@ -65,4 +65,13 @@ export default {
     line-height: 41px;
   }
 }
+@media (max-width: 1024px) {
+  .input-number {
+    width: 174px;
+    span {
+      font-size: 27px;
+      line-height: 32px;
+    }
+  }
+}
 </style>

@@ -278,4 +278,25 @@ export default {
     }
   }
 }
+@media (max-width: 1024px) {
+  .cart {
+    .cart-block {
+      .cart-block-container {
+        width: 443px;
+        height: 450px;
+        .head-cart {
+          .head-cart__clear {
+            margin-left: 65px;
+          }
+        }
+        .cart-items {
+          margin-top: 21px;
+        }
+        .cart-items-container {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
 </style>

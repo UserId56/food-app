@@ -269,6 +269,15 @@ export default {
         }
       }
     }
+    .food-list {
+      .food-list-title {
+        font-size: 27px;
+        line-height: 31px;
+      }
+      .food-list-container {
+        margin: 38px auto 0;
+      }
+    }
   }
 }
 </style>

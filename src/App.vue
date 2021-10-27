@@ -104,7 +104,7 @@ a {
   #app {
     .footer-site {
       .footer-container {
-        img {
+        a > img {
           width: 130px;
         }
         .foter-contact {

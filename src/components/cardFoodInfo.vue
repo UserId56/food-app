@@ -5,7 +5,7 @@
       modal_cart: itsCart,
     }"
   >
-    <img :src="itemFood.img" alt="itemFood.title" />
+    <img :src="itemFood.img" :alt="itemFood.title" />
     <div class="modal-info-content">
       <div class="modal-info-content__head">
         <span class="head-title" v-text="itemFood.title"></span>
@@ -48,7 +48,7 @@
               v-for="item of itemFood.ingredients"
               :key="item.id"
             >
-              <img :src="item.img" alt="item.title" :title="item.title" />
+              <img :src="item.img" :alt="item.title" :title="item.title" />
             </div>
           </div>
         </div>
@@ -177,6 +177,7 @@ export default {
   &__action-block {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 28px 0;
     .action-block__prcie {
       font-weight: 500;
@@ -194,7 +195,7 @@ export default {
       text-align: center;
     }
   }
-  .modal-info-content__ingredients {
+  &__ingredients {
     margin: 32px 0 30px;
     .ingredients-title {
       font-weight: 500;
@@ -224,6 +225,7 @@ export default {
       }
     }
   }
+
   .modal-info-content__description {
     font-size: 20px;
     line-height: 28px;
@@ -266,6 +268,58 @@ export default {
         font-size: 20px;
         line-height: 24px;
         scroll-padding-bottom: 0;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .modal-info__container {
+    img {
+      width: 180px;
+    }
+  }
+  .modal-info-content {
+    .modal-info-content__description {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    &__head {
+      margin: 6px 0px 0px;
+      align-items: center;
+      .head-title {
+        font-size: 24px;
+        line-height: 26px;
+      }
+    }
+    &__weight {
+      margin: 15px 0;
+    }
+    &__action-block {
+      padding: 15px 0;
+      .action-block__prcie {
+        font-size: 25px;
+        line-height: 30px;
+      }
+      .action-block__add-button {
+        width: 174px;
+        font-size: 20px;
+      }
+    }
+    &__ingredients {
+      margin: 15px 0;
+      .ingredients-container {
+        margin-top: 12px;
+      }
+    }
+  }
+  .modal_cart {
+    img {
+      width: 119px;
+    }
+    .modal-info-content {
+      .modal-info-content__head {
+        text-align: left;
+        display: block;
       }
     }
   }

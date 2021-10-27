@@ -42,4 +42,9 @@ export default {
     width: 77%;
   }
 }
+@media (max-width: 1024px) {
+  .nav-bar {
+    margin: 22px 0px 35px;
+  }
+}
 </style>
