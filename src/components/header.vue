@@ -93,6 +93,7 @@ export default {
   display: flex;
   align-items: center;
 }
+
 .head {
   @include df-aic;
   justify-content: space-between;
@@ -136,6 +137,16 @@ export default {
     }
     .work {
       font-size: 14px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .head {
+    .social {
+      display: none;
+    }
+    .work {
+      display: none;
     }
   }
 }

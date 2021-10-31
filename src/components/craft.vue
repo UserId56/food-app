@@ -280,4 +280,66 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  .me-craft {
+    .filter-type {
+      .filter-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        .filter-item {
+          width: unset;
+          font-size: 2.2vw;
+        }
+        .filter-item:first-child {
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 1;
+          grid-row-end: 3;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  .me-craft {
+    .filter-type {
+      .filter-type__title {
+        font-size: 22px;
+        line-height: 26px;
+      }
+      .filter-container {
+        margin: 41px 0 33px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        .filter-item {
+          font-size: 3.2vw;
+        }
+      }
+    }
+    .food-list {
+      .food-list-title {
+        font-size: 20px;
+        line-height: 23px;
+        svg {
+          display: none;
+        }
+        span {
+          margin-left: 0;
+        }
+      }
+      .food-list-container {
+        margin: 13px auto 0;
+      }
+      .menu-list {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
 </style>

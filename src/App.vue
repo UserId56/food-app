@@ -10,7 +10,7 @@
           ><img src="@/assets/img/interface/CO_Logo_black.png" alt="logo"
         /></router-link>
         <popup-info v-if="$store.state.showModalInfo" />
-        <div class="foter-contact">
+        <div class="footer-contact">
           <span>+7 (985) 000-00-00</span>
           <span>food_test@mail.ru</span>
         </div>
@@ -76,7 +76,7 @@ a {
       margin: 0 auto;
       @include df-jcsb;
       align-items: center;
-      .foter-contact {
+      .footer-contact {
         @include df-jcsb;
         width: 32%;
         span {
@@ -117,6 +117,33 @@ a {
           width: 362px;
         }
       }
+    }
+  }
+}
+@media (max-width: 768px) {
+  #app {
+    .footer-site {
+      .footer-container {
+        flex-direction: column;
+        .footer-contact {
+          flex-direction: column;
+          width: auto;
+          height: 60px;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .right-block {
+          margin-top: 5px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  #app {
+    .content-container {
+      width: 90%;
     }
   }
 }

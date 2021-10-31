@@ -297,6 +297,68 @@ export default {
         }
       }
     }
+    .icon {
+      padding-top: 4px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .cart {
+    .cart-title {
+      display: none;
+    }
+    .cart-block {
+      .cart-block-container {
+        .head-cart {
+          .head-cart__clear {
+            margin-left: 173px;
+            font-size: 0;
+            &::before {
+              top: -10px;
+              width: 37px;
+              height: 37px;
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  .cart {
+    .head-cart-view {
+      margin: 0 20px 0 0;
+    }
+    .cart-block {
+      .cart-block-container {
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 11px 20px 45px;
+        .exit {
+          right: 15px;
+        }
+        .head-cart {
+          .head-cart__clear {
+            margin-left: 77px;
+            &::before {
+              top: -5px;
+              width: 31px;
+              height: 31px;
+            }
+          }
+        }
+        .full-complate {
+          align-items: center;
+          .full-complate__text {
+            font-size: 13px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

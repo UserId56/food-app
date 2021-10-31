@@ -74,4 +74,14 @@ export default {
     }
   }
 }
+@media (max-width: 768px) {
+  .input-number {
+    width: 155px;
+  }
+}
+@media (max-width: 375px) {
+  .input-number {
+    width: 108px;
+  }
+}
 </style>

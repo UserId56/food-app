@@ -39,7 +39,7 @@
         />
       </div>
       <div class="line-hr" v-show="!itsCart"></div>
-      <template v-if="!itsCart">
+      <div class="modal-info-content__product" v-if="!itsCart">
         <div class="modal-info-content__ingredients">
           <span class="ingredients-title">Ингредиенты</span>
           <div class="ingredients-container">
@@ -56,7 +56,7 @@
           class="modal-info-content__description"
           v-text="itemFood.description"
         ></span>
-      </template>
+      </div>
     </div>
   </div>
 </template>
@@ -320,6 +320,82 @@ export default {
       .modal-info-content__head {
         text-align: left;
         display: block;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .modal-info-content {
+    width: 60%;
+    &__action-block {
+      .action-block__add-button {
+        width: 155px;
+        font-size: 20px;
+      }
+    }
+  }
+  .modal_cart {
+    img {
+      width: 105px;
+      height: auto;
+    }
+  }
+}
+@media (max-width: 375px) {
+  .modal-info__container {
+    flex-direction: column;
+    padding: 30px 20px 10px;
+    overflow: hidden;
+    & > img {
+      width: 236px;
+      position: absolute;
+      top: -110px;
+    }
+  }
+  .modal-info-content {
+    width: 95%;
+    padding-top: 85px;
+    .modal-info-content__head {
+      flex-direction: column;
+      height: 54px;
+    }
+  }
+  .modal-info-content__weight {
+    text-align: center;
+  }
+  .modal-info-content__product {
+    height: 213px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .modal_cart {
+    padding: 11px 9px 16px 0;
+    flex-direction: row;
+    & > img {
+      position: unset;
+      height: 96px;
+      width: auto;
+    }
+    .modal-info-content {
+      padding-top: 0;
+      &__head {
+        height: auto;
+        .head-title {
+          font-size: 15px;
+          line-height: 19px;
+        }
+      }
+      &__weight {
+        text-align: left;
+        font-size: 15px;
+        line-height: 19px;
+        margin: 10px 0 14px !important;
+      }
+      .modal-info-content__action-block {
+        .action-block__prcie {
+          font-size: 16px;
+          line-height: 20px;
+        }
       }
     }
   }

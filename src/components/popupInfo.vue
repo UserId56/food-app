@@ -58,4 +58,16 @@ export default {
   height: 100%;
   content: "";
 }
+@media (max-width: 375px) {
+  .all-info-container {
+    .modal-info {
+      width: unset;
+      height: 80vh;
+      border-radius: 40px 40px 0px 0px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
 </style>

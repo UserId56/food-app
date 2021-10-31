@@ -34,4 +34,11 @@ export default {
     margin: 0 0 0 14px;
   }
 }
+@media (max-width: 768px) {
+  .login-user {
+    .login-user__text {
+      display: none;
+    }
+  }
+}
 </style>
