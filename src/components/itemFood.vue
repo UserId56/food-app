@@ -39,9 +39,9 @@ export default {
   },
   methods: {
     openInfo(openinBanner) {
-      if (this.$props.itsBanner || openinBanner == "open") {
-        this.$store.commit("openInfo", this.itemFood.id);
-      }
+      if (this.$props.itsBanner && openinBanner != "open") {
+        return;
+      } else this.$store.commit("openInfo", this.itemFood.id);
     },
   },
 };
