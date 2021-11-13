@@ -31,7 +31,6 @@ export default {
   components: {
     "input-text": inputText,
   },
-  inject: ["closeModalCart"],
   data() {
     return {
       valueName: "",
@@ -64,10 +63,7 @@ export default {
       this.valueName = "";
       this.ValuePhone = "";
       this.$store.commit("clearAllCart");
-      this.orderNumber = 765;
-    },
-    closeCart() {
-      this.closeModalCart();
+      this.orderNumber = 765; //прилетевший id ордера
     },
   },
 };

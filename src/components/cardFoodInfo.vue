@@ -28,7 +28,7 @@
         <div
           class="action-block__add-button"
           v-if="NoShowInput"
-          @click="addValue"
+          @click="valueNumber(1)"
         >
           Добавить
         </div>
@@ -115,29 +115,36 @@ export default {
     this.itemFood.ingredients = [...ingredients];
   },
   methods: {
-    addValue() {
-      this.itemFood.count = 1;
-      this.$store.commit("editCartItems", {
-        id: this.itemFood.id,
-        count: this.itemFood.count,
-      });
-      this.NoShowInput = false;
-    },
     valueNumber(count) {
+      switch (count) {
+        case 1:
+          this.NoShowInput = false;
+          break;
+        case 0:
+          this.NoShowInput = true;
+          break;
+        default:
+          break;
+      }
       this.itemFood.count = count;
       this.$store.commit("editCartItems", {
         id: this.itemFood.id,
         count: this.itemFood.count,
       });
-      if (count == 0) {
-        this.NoShowInput = true;
-      }
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@mixin fs32 {
+  font-size: 32px;
+  line-height: 38px;
+}
+@mixin fs20 {
+  font-size: 20px;
+  line-height: 24px;
+}
 .modal-info__container {
   img {
     width: 430px;
@@ -160,8 +167,7 @@ export default {
     margin: 22px 0 0;
     .head-title {
       font-weight: 600;
-      font-size: 32px;
-      line-height: 38px;
+      @include fs32;
     }
   }
   &__weight {
@@ -181,8 +187,7 @@ export default {
     padding: 28px 0;
     .action-block__prcie {
       font-weight: 500;
-      font-size: 32px;
-      line-height: 38px;
+      @include fs32;
     }
     .action-block__add-button {
       cursor: pointer;
@@ -199,8 +204,7 @@ export default {
     margin: 32px 0 30px;
     .ingredients-title {
       font-weight: 500;
-      font-size: 20px;
-      line-height: 24px;
+      @include fs20;
     }
     .ingredients-container {
       display: flex;
@@ -250,8 +254,7 @@ export default {
       flex-direction: column;
       margin-top: 0;
       .head-title {
-        font-size: 20px;
-        line-height: 24px;
+        @include fs20;
       }
       .head-time {
         font-size: 17px;
@@ -265,8 +268,7 @@ export default {
       padding: 0;
       align-items: flex-end;
       .action-block__prcie {
-        font-size: 20px;
-        line-height: 24px;
+        @include fs20;
         scroll-padding-bottom: 0;
       }
     }

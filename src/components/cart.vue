@@ -65,11 +65,6 @@ export default {
     "card-food-info": cardFoodInfo,
     "confirm-order": confirmOrder,
   },
-  provide() {
-    return {
-      closeModalCart: this.closeModalCart,
-    };
-  },
   computed: {
     cartItems() {
       return this.$store.getters.getItemsFoodCart;

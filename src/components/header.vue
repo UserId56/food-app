@@ -78,12 +78,16 @@ export default {
     "cart-item": cart,
     "login-user": login,
   },
-  data() {
-    return {
-      socialTitle: this.$store.state.about.social,
-      phone: this.$store.state.about.phone,
-      timeWork: this.$store.state.about.timeWork,
-    };
+  computed: {
+    socialTitle() {
+      return this.$store.state.about.social;
+    },
+    phone() {
+      return this.$store.state.about.phone;
+    },
+    timeWork() {
+      return this.$store.state.about.timeWork;
+    },
   },
 };
 </script>

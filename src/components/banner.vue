@@ -86,20 +86,22 @@ export default {
 </script>
 
 <style lang="scss">
+@mixin wmax {
+  width: 70vw;
+  max-width: 1344px;
+}
 .banner-list {
   position: relative;
-  width: 70vw;
+  @include wmax;
   height: 568px;
   margin: 0 auto;
-  max-width: 1344px;
   .banner-list_first-element {
     position: absolute;
     background-color: #bde098;
     background-image: url(../assets/img/interface/bannerB.png);
     background-repeat: no-repeat;
     padding: 32px 101px 0;
-    width: 70vw;
-    // max-width: 1344px;
+    @include wmax;
     height: 513px;
     border: 2.5px solid #bde098;
     box-sizing: border-box;
@@ -129,8 +131,7 @@ export default {
   .banner-list_back-element {
     position: absolute;
     transform: translateY(54px) translateX(33px);
-    width: 70vw;
-    max-width: 1344px;
+    @include wmax;
     height: 513px;
     background: #e0f2cc;
     border-radius: 10px;

@@ -4,34 +4,20 @@
       <header-app />
       <router-view />
     </div>
-    <footer class="footer-site">
-      <div class="footer-container">
-        <router-link to="/"
-          ><img src="@/assets/img/interface/CO_Logo_black.png" alt="logo"
-        /></router-link>
-        <popup-info v-if="$store.state.showModalInfo" />
-        <div class="footer-contact">
-          <span>+7 (985) 000-00-00</span>
-          <span>food_test@mail.ru</span>
-        </div>
-        <div class="right-block">
-          <router-link to="/UA" class="user-conditions" target="_blank"
-            >Пользовательское соглашение</router-link
-          >
-          <span class="footer-year">&#169;&nbsp; 2021</span>
-        </div>
-      </div>
-    </footer>
+    <footer-app />
+    <popup-info v-if="$store.state.showModalInfo" />
   </div>
 </template>
 <script>
 import header from "@/components/header.vue";
 import popupInfo from "@/components/popupInfo.vue";
+import footer from "@/components/footer.vue";
 export default {
   name: "App",
   components: {
     "header-app": header,
     "popup-info": popupInfo,
+    "footer-app": footer,
   },
 };
 </script>
@@ -67,6 +53,8 @@ a {
     max-width: 1523px;
   }
   .footer-site {
+    max-width: 1920px;
+    margin: 0 auto;
     margin-top: 64px;
     background: #20241c;
     padding: 25px 0;
