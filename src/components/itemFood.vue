@@ -185,7 +185,7 @@ export default {
 }
 @media (max-width: 375px) {
   .food-list__item {
-    width: 163px;
+    width: 158px;
     .food-img {
       img {
         width: 149px;
