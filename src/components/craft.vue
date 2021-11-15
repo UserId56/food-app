@@ -138,7 +138,7 @@ export default {
         display: flex;
         align-items: center;
         font-weight: 500;
-        font-size: 1.2vw;
+        font-size: 24px;
         line-height: 25px;
         text-align: center;
         width: 19%;
@@ -261,6 +261,7 @@ export default {
       .filter-container {
         margin: 41px 0 56px;
         .filter-item {
+          font-size: 12px;
           line-height: 17px;
           svg {
             width: 40px;
